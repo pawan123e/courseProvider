@@ -14,7 +14,7 @@ const Course = () => {
   const { name, price, facultyName, description, paid } = course;
 
   const onchange = e => {
-    setCourse({ [e.target.name]: e.target.value });
+    setCourse({...course, [e.target.name]: e.target.value });
   };
 
   const onsubmit = e => {
@@ -85,7 +85,7 @@ const Course = () => {
           </div>
           <div className="inputForm des">
             <label>Description</label>
-            <textarea value = {description} name = 'description' />
+            <textarea value = {description} name = 'description' onChange = {onchange}/>
           </div>
           <input type="submit" className="btn" />
         </form>

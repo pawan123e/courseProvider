@@ -5,15 +5,30 @@ const Videos = () => {
     const [video, setVideo] = useState({
        title: '',
        paid: '',
-       courseId: ''
+       courseId: '',
+       courseVideo: ''
       });
+
+    const [fileName, setFileName] = useState('');
     
-      const {title, paid, courseId} = video;
+      const {title, courseId, courseVideo} = video;
 
       const fileRef = useRef();
+
+      console.log('value of fileref',fileRef.current)
     
       const onchange = e => {
-        setVideo({ [e.target.name]: e.target.value });
+        setVideo({...video, [e.target.name]: e.target.value });
+        
+      };
+
+      const videoUpload = e => {
+        setVideo({ ...video, courseVideo: e.target.files[0] });
+        let name = e.target.files[0].name;
+        if(name.length > 15) {
+            name = name.slice(0,14) + ' ...'
+        }
+        setFileName(name)
       };
     
       const onsubmit = e => {
@@ -69,14 +84,17 @@ const Videos = () => {
               <input
                 type="file"
                 style={{ display: "none" }}
-                // accept="video/mp4,video/x-m4v,video/*"
                 accept = 'video/*,.mkv'
                 id='fileInput'
+                onChange={videoUpload}
                 ref = {fileRef}
               />
               <div className='file'>
-              <button className='fileBtn' onClick = {() => fileRef.current.click()}>Choose a file</button>
-              <span>No file choosen yet.</span>
+              <button className='fileBtn' 
+              onClick = {() => fileRef.current.click()}>
+                  Choose a file
+              </button>
+              <span>{fileName ? fileName : 'No file choosen yet.'}</span>
               <span className='comment'>* No more than 1gb.</span>
               </div>
               </div>
