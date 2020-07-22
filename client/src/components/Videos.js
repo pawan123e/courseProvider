@@ -95,7 +95,7 @@ const Videos = () => {
                   Choose a file
               </button>
               <span>{fileName ? fileName : 'No file choosen yet.'}</span>
-              <span className='comment'>* No more than 1gb.</span>
+              <span className='comment'>* No more than 2gb.</span>
               </div>
               </div>
               

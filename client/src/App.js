@@ -8,19 +8,28 @@ import PrivateRoute from './PrivateRoute'
 import SignUp from './components/SignUp'
 import Course from './components/Course'
 import Videos from './components/Videos'
+import Dashboard from './components/Dashboard'
+import Routes from './routes/Routes'
 
 function App() {
   return (
     <Router>
+      
       <Provider store = {store}>
+      <Routes/>
+      
+      {/* <Navbar/>
+          <Route exact path = '/' component = {Dashboard}/>
           <Route exact path = '/login' component = {Login}/>
-          <Route path = '/' component = {Navbar}/>
           <Route path = '/signUp' component = {SignUp}/>
           <Route path = '/course' component = {Course}/>
-          <Route path = '/Video' component = {Videos}/>
+          <Route path = '/Video' component = {Videos}/> */}
         </Provider>
     </Router>
   );
 }
 
+
 export default App;
+
+
